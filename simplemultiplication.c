@@ -1,3 +1,7 @@
+//this is a simple version of a multiplication process for binary number in c
+//it is only useful for 4-bit unsigned number, can be a reference for assignment 2 
+
+
 #include <stdio.h>
 int main()
 {
