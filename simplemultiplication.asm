@@ -1,3 +1,4 @@
+//this is the assembly file that implement simplemultiplication.c
 // Define the strings
 define(multiplier, w19)
 define(multiplicand, w20)
