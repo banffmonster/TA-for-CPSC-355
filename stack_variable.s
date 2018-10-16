@@ -1,13 +1,15 @@
 // example for tutorial 4.1, stack and load&store instructions
+//define register aliases
 fp		.req x29
 lr		.req x30
-
+//define format strings 
 print_string:  	.string "1 + 2 + ...+ 98 + 99 = %d\n"
 		.balign 4
 		.global main
 main:
 		//save FP and LR to the stack, alloc 4 bytes for sum
 		stp fp, lr, [sp, -(16+4)&-16]!
+		//set fp to the stack addr(sp)
 		mov fp, sp
 		
 		mov w19, 0
@@ -15,7 +17,7 @@ main:
 		
 		str w19, [fp, 16]
 		str w20, [fp, 20]
-
+//loop optimization
 		b loop_test
 
 loop:		ldr w20, [fp, 20]
@@ -29,7 +31,7 @@ loop_test:
 		cmp w20, 100
 		b.lt loop
 
-
+//print result
 loop_exit:	ldr x0, =print_string
 		ldr w1, [fp, 16]
 		bl printf
